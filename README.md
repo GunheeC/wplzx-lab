@@ -16,3 +16,6 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 
+
+## CI Status
+![CI](https://github.com/GunheeC/wplzx-lab/actions/workflows/ci.yml/badge.svg)
