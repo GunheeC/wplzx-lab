@@ -1,0 +1,20 @@
+[project]
+name = "wplzx"
+version = "0.1.0"
+description = "Weighted Projective Line ZX-Calculus Tools (WPL-ZX)"
+authors = [
+  { name = "Gunhee Cho", email = "your_email@example.com" }
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "numpy",
+  "matplotlib",
+  "qiskit",
+  "networkx"
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
