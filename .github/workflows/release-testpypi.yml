@@ -1,35 +1,27 @@
-name: Release (TestPyPI)
+name: Publish to TestPyPI via OIDC
 
 on:
   push:
     tags:
-      - 'v*'   # v0.0.2, v0.1.0 ...
+      - 'v*'
 
 permissions:
-  id-token: write     # OIDC 토큰 발급 권한
-  contents: read      # 소스 체크아웃 읽기
+  id-token: write
+  contents: read
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Install build tools
-        run: |
+      - run: |
           python -m pip install --upgrade pip
           pip install build
-
-      - name: Build sdist/wheel
-        run: python -m build
-
-      - name: Publish to TestPyPI via OIDC
+          python -m build
+      - name: Publish package distributions to TestPyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://test.pypi.org/legacy/
-          skip-existing: true   # 같은 파일이 이미 올라가 있으면 스킵(선택)
